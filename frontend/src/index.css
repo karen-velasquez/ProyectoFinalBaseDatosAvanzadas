@@ -1,0 +1,50 @@
+:root {
+  --bg: #f6f4ef;
+  --surface: #ffffff;
+  --surface-2: #edeae2;
+  --ink: #1e2321;
+  --ink-dim: #565f5b;
+  --line: #d8d3c6;
+  --accent: #1f6f63;
+  --accent-ink: #ffffff;
+  --danger: #b3432f;
+  --danger-soft: #f5ddd6;
+  --ok: #2f7d4f;
+  --ok-soft: #dcefe1;
+  font-family: -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
+  color-scheme: light;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: 1px solid var(--line);
+  background: var(--surface);
+  color: var(--ink);
+  border-radius: 6px;
+  padding: 0.45rem 0.8rem;
+  font-size: 0.9rem;
+}
+button:hover { border-color: var(--accent); color: var(--accent); }
+button[type="submit"] { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); }
+button:disabled { opacity: 0.5; cursor: not-allowed; }
+
+input, select {
+  font-family: inherit;
+  font-size: 0.9rem;
+  padding: 0.45rem 0.6rem;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: var(--surface);
+  color: var(--ink);
+}
+
+label { display: flex; flex-direction: column; gap: 0.3rem; font-size: 0.85rem; color: var(--ink-dim); }

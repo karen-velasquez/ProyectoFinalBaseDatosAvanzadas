@@ -1,0 +1,52 @@
+.shell { max-width: 1100px; margin: 0 auto; padding: 1.5rem; }
+
+.shell-header { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; margin-bottom: 1.5rem; }
+.shell-header h1 { font-size: 1.4rem; margin: 0; }
+.shell-header nav { display: flex; gap: 0.4rem; flex-wrap: wrap; }
+.shell-header nav button.active { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); }
+
+.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; align-items: start; }
+@media (max-width: 860px) { .grid-2 { grid-template-columns: 1fr; } }
+
+.card { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 1.25rem; }
+.card h2 { margin-top: 0; font-size: 1.1rem; }
+.card-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.5rem; }
+
+.inline-form { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1rem; }
+.inline-form input { flex: 1; min-width: 120px; }
+
+.stack-form { display: flex; flex-direction: column; gap: 0.7rem; }
+.stack-form .row { display: flex; gap: 0.6rem; }
+.stack-form .row > * { flex: 1; }
+
+.checkbox { flex-direction: row; align-items: center; gap: 0.4rem; }
+
+.banner { padding: 0.6rem 0.9rem; border-radius: 6px; font-size: 0.85rem; margin-bottom: 0.8rem; }
+.banner-error { background: var(--danger-soft); color: var(--danger); }
+.banner-ok { background: var(--ok-soft); color: var(--ok); }
+
+.video-list, .item-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 0.8rem; max-height: 520px; overflow-y: auto; }
+.video-item { border: 1px solid var(--line); border-radius: 8px; padding: 0.7rem 0.9rem; }
+.video-item-head { display: flex; align-items: center; gap: 0.5rem; }
+.video-actions { display: flex; gap: 0.5rem; margin-top: 0.5rem; }
+
+.muted { color: var(--ink-dim); font-size: 0.85rem; }
+.small { font-size: 0.78rem; }
+
+.badge { font-size: 0.72rem; padding: 0.1rem 0.5rem; border-radius: 999px; }
+.badge-danger { background: var(--danger-soft); color: var(--danger); }
+
+.copy-list { display: flex; gap: 0.4rem; flex-wrap: wrap; margin-top: 0.6rem; }
+.copy-chip { background: var(--surface-2); border-radius: 999px; padding: 0.2rem 0.5rem; font-size: 0.75rem; display: inline-flex; align-items: center; gap: 0.3rem; }
+.copy-chip button { padding: 0 0.3rem; font-size: 0.7rem; border: none; background: none; }
+
+.item-list li { display: flex; align-items: center; justify-content: space-between; background: var(--surface-2); padding: 0.4rem 0.7rem; border-radius: 6px; font-size: 0.85rem; }
+
+.invoice { display: flex; flex-direction: column; gap: 0.4rem; font-size: 0.9rem; }
+.invoice > div { display: flex; justify-content: space-between; }
+.invoice ul { list-style: none; padding: 0; margin: 0.3rem 0; color: var(--ink-dim); font-size: 0.85rem; }
+.invoice-total { border-top: 1px solid var(--line); padding-top: 0.5rem; font-size: 1.05rem; }
+
+.table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
+.table th, .table td { text-align: left; padding: 0.5rem 0.6rem; border-bottom: 1px solid var(--line); }
+.mono { font-family: ui-monospace, Consolas, monospace; font-size: 0.82rem; }

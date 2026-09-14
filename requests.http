@@ -1,0 +1,85 @@
+@baseUrl = http://localhost:3000
+@videoId = REEMPLAZAR_VIDEO_ID
+@customerId = REEMPLAZAR_CUSTOMER_ID
+@loanId = REEMPLAZAR_LOAN_ID
+@copyId = REEMPLAZAR_COPY_ID
+
+### Health
+GET {{baseUrl}}/health
+
+### Registrar video
+POST {{baseUrl}}/api/videos
+Content-Type: application/json
+
+{
+  "title": "The Matrix",
+  "alternateTitles": ["Matrix"],
+  "durationMinutes": 136,
+  "genre": "Ciencia ficción",
+  "year": 1999,
+  "oscar": { "nominations": ["Montaje", "Sonido"], "wins": ["Montaje"] },
+  "actors": [{ "name": "Keanu Reeves" }, { "name": "Carrie-Anne Moss" }],
+  "unitCost": 12.5,
+  "acquiredUnits": 0
+}
+
+### Buscar por texto, género, actor u Oscar
+GET {{baseUrl}}/api/videos?q=matrix&genre=Ciencia%20ficción
+
+### Registrar altas de copias
+POST {{baseUrl}}/api/videos/{{videoId}}/copies
+Content-Type: application/json
+
+{ "quantity": 3 }
+
+### Consultar stock
+GET {{baseUrl}}/api/videos/{{videoId}}/copies/available
+
+### Registrar cliente
+POST {{baseUrl}}/api/customers
+Content-Type: application/json
+
+{
+  "fullName": "Ana Pérez",
+  "phone": "5551234567",
+  "email": "ana@example.com",
+  "birthDate": "1998-04-12",
+  "address": { "street": "Av. Central 10", "city": "Bogotá" },
+  "location": { "type": "Point", "coordinates": [-74.0721, 4.711] }
+}
+
+### Bloquear cliente
+POST {{baseUrl}}/api/customers/{{customerId}}/block
+Content-Type: application/json
+
+{ "reason": "DVD no devuelto" }
+
+### Configuración de tarifas y descuentos
+GET {{baseUrl}}/api/settings/rental-policy
+
+PATCH {{baseUrl}}/api/settings/rental-policy
+Content-Type: application/json
+
+{ "maxDays": 5, "ratesByDays": [{ "days": 1, "rate": 2 }, { "days": 2, "rate": 3 }, { "days": 3, "rate": 4 }, { "days": 4, "rate": 5 }, { "days": 5, "rate": 6 }], "discounts": [{ "minimumItems": 3, "percentage": 5 }, { "minimumItems": 6, "percentage": 10 }] }
+
+### Prestar una o varias películas (operación transaccional)
+POST {{baseUrl}}/api/loans
+Content-Type: application/json
+
+{
+  "customerId": "{{customerId}}",
+  "days": 3,
+  "items": [{ "videoId": "{{videoId}}", "quantity": 1 }]
+}
+
+### Préstamos activos
+GET {{baseUrl}}/api/loans/active
+
+### Registrar devolución (operación transaccional)
+POST {{baseUrl}}/api/loans/{{loanId}}/return
+
+### Dar de baja una copia
+POST {{baseUrl}}/api/videos/copies/{{copyId}}/removal
+Content-Type: application/json
+
+{ "reason": "Robo" }

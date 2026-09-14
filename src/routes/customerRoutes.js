@@ -1,0 +1,2 @@
+import { Router } from 'express';
+export function customerRoutes(controller) { const router = Router(); router.post('/', controller.create); router.get('/', controller.list); router.patch('/:id', controller.update); router.post('/:id/block', controller.block); return router; }

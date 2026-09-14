@@ -1,0 +1,2 @@
+import { Router } from 'express';
+export function settingsRoutes(controller) { const router = Router(); router.get('/rental-policy', controller.get); router.patch('/rental-policy', controller.update); return router; }

@@ -1,0 +1,2 @@
+import { Router } from 'express';
+export function rentalRoutes(controller) { const router = Router(); router.post('/', controller.rent); router.get('/active', controller.active); router.post('/:id/return', controller.returnLoan); return router; }

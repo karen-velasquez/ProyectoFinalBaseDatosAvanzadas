@@ -1,0 +1,2 @@
+import { Router } from 'express';
+export function videoRoutes(controller) { const router = Router(); router.get('/', controller.search); router.post('/', controller.create); router.post('/:id/copies', controller.addCopies); router.get('/:id/copies/available', controller.available); router.post('/copies/:copyId/removal', controller.removeCopy); return router; }

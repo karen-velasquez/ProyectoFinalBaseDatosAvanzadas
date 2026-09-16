@@ -183,9 +183,9 @@ export default function RentalsPage() {
                 <li key={i}>{it.title} — Bs {it.unitRate} × {it.days} día{it.days > 1 ? 's' : ''} (vence {new Date(it.dueDate).toLocaleDateString()})</li>
               ))}
             </ul>
-            <div><span>Subtotal</span><strong>${invoice.subtotal.toFixed(2)}</strong></div>
+            <div><span>Subtotal</span><strong>Bs {invoice.subtotal.toFixed(2)}</strong></div>
             <div><span>Descuento</span><strong>{invoice.discountPercentage}%</strong></div>
-            <div className="invoice-total"><span>Total</span><strong>${invoice.total.toFixed(2)}</strong></div>
+            <div className="invoice-total"><span>Total</span><strong>Bs {invoice.total.toFixed(2)}</strong></div>
           </div>
         )}
       </Modal>

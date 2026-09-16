@@ -279,7 +279,7 @@ export default function VideosPage() {
                       ? v.oscar.categories.map((c) => `${c.categoria}${c.ganó ? ' 🏆' : ''}`).join(', ')
                       : '—'}
                   </td>
-                  <td>${v.unitCost}</td>
+                  <td>Bs {v.unitCost}</td>
                   <td>{v.acquiredUnits}</td>
                   <td>
                     <div className="video-actions">
@@ -332,7 +332,7 @@ export default function VideosPage() {
             <input
               required
               inputMode="numeric"
-              placeholder="Costo unitario"
+              placeholder="Costo unitario (Bs)"
               value={centsToDisplay(unitCostCents)}
               onKeyDown={(e) => { if (e.key === 'Backspace') { e.preventDefault(); setUnitCostCents((c) => c.slice(0, -1)); } }}
               onChange={(e) => { const typed = e.nativeEvent.data; if (typed && /\d/.test(typed)) setUnitCostCents((c) => (c + typed).slice(-9)); }}

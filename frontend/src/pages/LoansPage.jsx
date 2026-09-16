@@ -47,7 +47,7 @@ export default function LoansPage() {
               <td>{loan.customerName || String(loan.customerId).slice(-8)}</td>
               <td>{loan.items.map((i) => i.title).join(', ')}</td>
               <td>{new Date(loan.dueDate).toLocaleDateString()}</td>
-              <td>${loan.total.toFixed(2)}</td>
+              <td>Bs {loan.total.toFixed(2)}</td>
               <td><button onClick={() => returnLoan(loan._id)}>Registrar devolución</button></td>
             </tr>
           ))}

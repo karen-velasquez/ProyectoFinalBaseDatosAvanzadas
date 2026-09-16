@@ -15,20 +15,28 @@ export const api = {
   health: () => request('/health'),
 
   searchVideos: (params) => request(`/api/videos?${new URLSearchParams(params)}`),
+  availableVideosForRental: (params = {}) => request(`/api/videos/available-for-rental?${new URLSearchParams(params)}`),
   createVideo: (video) => request('/api/videos', { method: 'POST', body: video }),
   addCopies: (videoId, quantity) => request(`/api/videos/${videoId}/copies`, { method: 'POST', body: { quantity } }),
   availableCopies: (videoId) => request(`/api/videos/${videoId}/copies/available`),
-  removeCopy: (copyId, reason) => request(`/api/videos/copies/${copyId}/removal`, { method: 'POST', body: { reason } }),
+  removedCopies: (videoId) => request(`/api/videos/${videoId}/copies/removed`),
+  removeCopy: (copyId, reason, date) => request(`/api/videos/copies/${copyId}/removal`, { method: 'POST', body: { reason, date } }),
 
   listCustomers: (blocked) => request(`/api/customers${blocked === undefined ? '' : `?blocked=${blocked}`}`),
   createCustomer: (customer) => request('/api/customers', { method: 'POST', body: customer }),
   updateCustomer: (id, patch) => request(`/api/customers/${id}`, { method: 'PATCH', body: patch }),
-  blockCustomer: (id, reason) => request(`/api/customers/${id}/block`, { method: 'POST', body: { reason } }),
+  blockCustomer: (id, reason, date) => request(`/api/customers/${id}/block`, { method: 'POST', body: { reason, date } }),
 
   rent: (payload) => request('/api/loans', { method: 'POST', body: payload }),
   activeLoans: () => request('/api/loans/active'),
   returnLoan: (id) => request(`/api/loans/${id}/return`, { method: 'POST' }),
 
   getPolicy: () => request('/api/settings/rental-policy'),
-  updatePolicy: (policy) => request('/api/settings/rental-policy', { method: 'PATCH', body: policy })
+  updatePolicy: (policy) => request('/api/settings/rental-policy', { method: 'PATCH', body: policy }),
+
+  listParametros: (tipo) => request(`/api/parametros/${tipo}`),
+  createParametro: (parametro) => request('/api/parametros', { method: 'POST', body: parametro }),
+
+  listGeneros: () => request('/api/generos'),
+  createGenero: (genero) => request('/api/generos', { method: 'POST', body: genero })
 };

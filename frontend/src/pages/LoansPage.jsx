@@ -44,7 +44,7 @@ export default function LoansPage() {
           {loans.map((loan) => (
             <tr key={loan._id}>
               <td className="mono">#{loan._id.slice(-8)}</td>
-              <td className="mono">{String(loan.customerId).slice(-8)}</td>
+              <td>{loan.customerName || String(loan.customerId).slice(-8)}</td>
               <td>{loan.items.map((i) => i.title).join(', ')}</td>
               <td>{new Date(loan.dueDate).toLocaleDateString()}</td>
               <td>${loan.total.toFixed(2)}</td>
